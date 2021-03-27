@@ -1,0 +1,50 @@
+<h1>Výpis zaměstnanců</h1>
+
+{{#show}}
+    <a href="create.php" class="btn btn-primary mt-3">Nový Zaměstnanec</a>
+    <a href="createKey.php" class="btn  btn-success mt-3">Vytvořit Klíč</a>
+
+{{/show}}
+
+
+<table class="table table-striped roomList">
+    <thead>
+    <tr>
+        <th>Jména <a href='./?sort_id=1'>↓</a>  <a href='./?sort_id=2'>↑</a></th>
+        <th>Příjmení <a href='./?sort_id=3'>↓</a>  <a href='./?sort_id=4'>↑</a></th>
+        <th>Kancelář <a href='./?sort_id=5'>↓</a>  <a href='./?sort_id=6'>↑</a></th>
+        <th>Telefon <a href='./?sort_id=7'>↓</a>  <a href='./?sort_id=8'>↑</a></th>
+        <th>Pozice <a href='./?sort_id=9'>↓</a>  <a href='./?sort_id=10'>↑</a></th>
+            {{#show}}
+                 <th>Login<a href='./?sort_id=11'>↓</a>  <a href='./?sort_id=12'>↑</a></th>
+                <th>Akce</th>
+            {{/show}}
+    </tr>
+    </thead>
+
+    <tbody>
+    {{# employees }}
+        <tr>
+            <td><a href="employee.php?employee_id={{ employee_id }}">{{ ename }}</a></td>
+            <td>{{ surname }}</td>
+            <td>{{ rname }}</td>
+            <td>{{ phone }}</td>
+            <td>{{ job }}</td>
+
+            {{#show}}
+                <td>{{ login }}</td>
+                <td>
+                    <a  href="update.php?employee_id={{ employee_id }}" class="btn btn-primary">Změnit</a>
+                    <form action="delete.php" method="post" class="form-inline" onsubmit="return confirm('Skutečně chcete zaměstnance smazat?\nSe zaměstnancem se smažou i všechny jeho klíče\n!!Akce je nevratná!!');">
+                        <input type="hidden" name="employee_id" value="{{ employee_id }}">
+                        <input type="submit" value="Smazat" class="btn btn-danger">
+                    </form>
+                </td>
+            {{/show}}
+
+        </tr>
+    {{/ employees }}
+
+
+    </tbody>
+</table>

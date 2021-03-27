@@ -1,0 +1,87 @@
+{{#create}}<h1>Nová zaměstnanec</h1>{{/create}}
+{{#update}}<h1>Upravit zaměstnance</h1>{{/update}}
+
+<form method="post">
+    <div class="mb-3">
+        <label for="name">Jméno</label>
+        <input type="text" maxlength="40" name="name" placeholder="name" id="name" value="{{employee.name}}"  class="form-control">
+    </div>    <div class="mb-3">
+        <label for="surname">Příjmení</label>
+        <input type="text" maxlength="40" name="surname" placeholder="surname" id="surname" value="{{employee.surname}}"  class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label for="wage">Plat(wage)</label>
+        <input type="number" maxlength="40" name="wage"  id="wage" value="{{employee.wage}}" class="form-control">
+    </div>
+
+<div class="mb-3">
+    <label for="room">Místnost</label>
+    <select  class="form-control" name="room" id="room">
+    {{#rooms}}
+        <option  value="{{room_id}}">{{name}}</option>
+    {{/rooms}}
+    {{#myroom}}
+       <option selected="selected"  value="{{room_id}}">{{name}}</option>
+    {{/myroom}}
+
+    </select>
+</div>
+
+    <div class="mb-3">
+        <label for="job">Pozice</label>
+        <input type="text" name="job" id="job" placeholder="job" maxlength="40" value="{{employee.job}}" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="login">Login</label>
+        <input type="text" name="login" id="login" maxlength="40" placeholder="login" value="{{employee.login}}" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="password">Heslo</label>
+        <input type="password" maxlength="40"  name="newpassword" id="newpassword"  placeholder="nechte prázdné a heslo se nezmění"  class="form-control">
+        <input type="password" hidden name="password"  id="password" value="{{employee.password}}" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="admin">je admin</label>
+        {{#employee.admin}}
+            <input type="checkbox" checked name="admin" id="admin"  value=1 class="input-checkbox">
+        {{/employee.admin}}
+        {{^employee.admin}}
+            <input type="checkbox"  name="admin" id="admin"  value=1 class="input-checkbox">
+        {{/employee.admin}}
+
+    </div>
+
+
+
+    <div class="mb-3">
+        {{#create}}
+        <input type="hidden" name="action" value="create">
+        <input type="submit" value="Vytvořit" class="btn btn-primary">
+        {{/create}}
+        {{#update}}
+            <input type="hidden" name="action" value="update">
+            <input type="hidden" name="employee_id" value="{{employee.getPrimaryKey}}">
+            <input type="submit" value="Upravit" class="btn btn-primary">
+        {{/update}}
+    </div>
+    <div class="mb-3">
+        <a href="createKey.php" class="btn  btn-success mt-3">Vytvořit Klíč</a>
+    </div>
+
+</form>
+
+{{#update}}
+        {{#keys}}
+            <div class="mb-3">
+                <span class="">Klíč k místnosti: <strong>{{name}}</strong></span>
+                <form action="../employees/deleteKey.php" method="post" class="form-inline" onsubmit="return confirm('Skutečně chcete klíč smazat?\n!!Akce je nevratná!!');">
+                    <input type="hidden" name="key_id" value="{{ key_id }}">
+                    <input type="submit" value="Smazat" class="btn btn-danger">
+                </form>
+            </div>
+        {{/keys}}
+    {{/update}}
+
+
+

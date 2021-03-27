@@ -1,0 +1,28 @@
+<h1>Nový Klíč</h1>
+
+<form method="post">
+
+    <div class="mb-3">
+        <label for="employee">Zaměstnanec</label>
+        <select  class="form-control" name="employee" id="employee">
+            {{#employees}}
+                <option value={{employee_id}}>{{name}} {{surname}}</option>
+            {{/employees}}
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="room">Místnost</label>
+        <select  class="form-control" name="room" id="room">
+            {{#rooms}}
+                <option value={{room_id}}>{{name}}</option>
+            {{/rooms}}
+        </select>
+    </div>
+
+    <div class="mb-3">
+            <input type="hidden" name="action" value="create">
+            <input type="submit" value="Vytvořit" class="btn btn-success">
+    </div>
+
+</form>

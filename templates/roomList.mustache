@@ -1,0 +1,39 @@
+<h1>Výpis místností</h1>
+{{#show}}
+    <a href="create.php" class="btn btn-primary mt-3">Nová místnost</a>
+{{/show}}
+
+
+<table class="table table-striped roomList">
+    <thead>
+    <tr>
+        <th>Jména <a href='./?sort_id=1'>↓</a>  <a href='./?sort_id=2'>↑</a></th>
+        <th>Číslo <a href='./?sort_id=3'>↓</a>  <a href='./?sort_id=4'>↑</a></th>
+        <th>Tel. <a href='./?sort_id=5'>↓</a>  <a href='./?sort_id=6'>↑</a></th>
+        {{#show}}
+            <th>Akce</th>
+        {{/show}}
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {{# rooms }}
+        <tr>
+            <td><a href="{{ roomDetail }}?room_id={{ room_id }}">{{ name }}</a></td>
+            <td>{{ no }}</td>
+            <td>{{ phone }}</td>
+            {{#show}}
+                <td>
+                    <a href="update.php?room_id={{ room_id }}" class="btn btn-primary">Změnit</a>
+                    <form action="delete.php" method="post" class="form-inline" onsubmit="return confirm('Skutečně chcete místnost smazat?\nS místností se smažou i všichni zaměstnanci co jsou k ní přiřazeni\n!!Akce je nevratná!!');">
+                        <input type="hidden" name="room_id" value="{{ room_id }}">
+                        <input type="submit" value="Smazat" class="btn btn-danger">
+                    </form>
+                </td>
+            {{/show}}
+
+        </tr>
+    {{/ rooms }}
+    </tbody>
+</table>

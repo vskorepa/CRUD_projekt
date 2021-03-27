@@ -1,0 +1,16 @@
+{{#employee}}
+    <h1>Karta zaměstnance: {{surname}} {{ename}}</h1>
+    <dl class='dl-horizontal'>
+        <dt>Jméno:</dt>
+        <dd>{{ename}}</dd>
+        <dt>Příjmení:</dt>
+        <dd>{{surname}}</dd>
+        <dt>Pozice:</dt>
+        <dd>{{job}}</dd>
+        <dt>Plat:</dt>
+        <dd>{{wage}}</dd>
+        <dt>Kancelář</dt>
+        <dd><a href="../rooms/room.php?room_id={{room_id}}">{{rname}}</a></dd>
+    </dl>
+
+{{/employee}}

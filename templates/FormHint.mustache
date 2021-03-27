@@ -1,0 +1,16 @@
+
+<div class="warning border border-warning d-flex rounded justify-content-center alert-warning mt-3" role="alert">
+    {{#message}}
+        Je nutné vyplnit pole: {{message}}
+    {{/message}}
+    {{#login}}
+        Tento login už někdo používá zkuste jiný.
+    {{/login}}
+    {{#duplicate}}
+        tento člověk už má klíč od vybrané místnosti.
+    {{/duplicate}}
+    {{#delete}}
+        Nemužete smazat účet na kterém jste momentálně přihlášen!
+    {{/delete}}
+</div>
+<br>
