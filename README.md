@@ -6,7 +6,7 @@ tento projekt je čtvrtroční práce z internetových prezentací ve třetím r
 1. Naklonujte si tento projek `git clone https://github.com/vskorepa/CRUD_projekt.git`
 2. otevřete si v této složce terminál
 3. nainstalujte composer: `composer update`
-4. vytvořte si databázi crud_projekt a pomocí přiloženého sql souboru do ní importujte data.
+4. vytvořte si databázi crud_projekt a pomocí přiloženého sql souboru do ní importujte data
 5. přidejte do adresáře includes soubor LocalConfig.class.php vyplňte podle příkladu LocalConfig.example.class.php
 6. pusťte se do práce
 
